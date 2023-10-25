@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <button id="instructions">INSTRUCTIONS</button>
+    <h1><center>Welcome to the Match Game.</center></h1>
+
+    <p>Please insert your name here before starting the game.</p>
+    <form name = "userName" action="" method = "GET">
+        <label for="insert">NAME</label>
+        <input type="text" id="name" name="name"><br><br>
+        <input type="button" name="button" value="Click" onClick="setName(this.form)"> <!--we have to make this-->
+    </form>
+
+    <a href = "game.html">
+        <button> Start Game! </button onClick = "startGame()">
+    </a>
+</body>
+</html>
+
