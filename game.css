@@ -1,3 +1,16 @@
 button {
     background-color: #aac2ce;
 }
+#grid {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+.imgsize img {
+    width:50px;
+    height:50px;
+}
+
+
+
