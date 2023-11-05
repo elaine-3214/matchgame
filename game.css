@@ -7,14 +7,12 @@ button {
     grid-gap: 8px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
+    padding: 15%;
   }
-  button {
+
+  img {
     display: block;
     width: 100%;
-  }
-  img {
-    max-width: 75%;
-    max-height: 50%;
   }
 
 
