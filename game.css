@@ -8,13 +8,14 @@ button {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
   }
-
-/*#grid {
-    display: grid;
-    grid-gap: 8px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-}*/
+  button {
+    display: block;
+    width: 100%;
+  }
+  img {
+    max-width: 75%;
+    max-height: 50%;
+  }
 
 
 
