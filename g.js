@@ -132,5 +132,5 @@ function showCard(imageID){
 
 function updateClicks() {
     var text = document.getElementById("Clicks");
-    text.innerHTML = clicks;
+    text.innerHTML = "Number of Clicks: " + clicks;
 }

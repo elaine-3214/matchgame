@@ -1,7 +1,9 @@
+body {
+  background-color: blanchedalmond;
+}
 button {
     background-color: #aac2ce;
 }
-#ruby {background-color: #DF4638;}
 #grid {
     display: grid;
     grid-gap: 8px;

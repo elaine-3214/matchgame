@@ -1,6 +1,6 @@
-var clicks = 0;
+var clicks;
 var cards = null;
-var upTo2= 0;
+var upTo2;
 var image1 = document.getElementById(1);
 var image2 = document.getElementById(2);
 var image3 = document.getElementById(3);
@@ -17,8 +17,18 @@ var image13 = document.getElementById(13);
 var image14 = document.getElementById(14);
 var image15 = document.getElementById(15);
 var image16 = document.getElementById(16);
-var listOfImages = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16];
+const reset = document.querySelector("#reset");
+reset.addEventListener("click", startgame);
+var listOfImages = [];
+
 function startgame() {
+    clicks = 0;
+    console.log("ALL CLCIKS ARE ZEROs");
+    upTo2 = 0;
+    listOfImages = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16];
+    for (let i = 0; i<listOfImages.length; i++){
+        listOfImages[i].src = "card.png";
+    }
     console.log("test pnt1"); //TEST
     var numsAvailable = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
     var cardsScramble = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
@@ -48,7 +58,7 @@ function startgame() {
 }
 
 function checkNumClicks() {
-    if (upTo2 >= 2) {
+    if (clicks%2 === 0) {
         checkIfSame();
         setTimeout(() => {
             hideAll();
@@ -97,8 +107,9 @@ function hideAll(){
 }
 
 function showCard(imageID){
-    console.log("test pnt2"); //TEST
     upTo2++;
+    console.log("this is the " + upTo2 + "click");
+    console.log("test pnt2"); //TEST
     console.log(upTo2);
     clicks++;
     var currCard = document.getElementById(imageID);
@@ -132,5 +143,5 @@ function showCard(imageID){
 
 function updateClicks() {
     var text = document.getElementById("Clicks");
-    text.innerHTML = clicks;
+    text.innerHTML = "Number of Clicks: " + clicks;
 }
