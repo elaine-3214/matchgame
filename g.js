@@ -17,18 +17,21 @@ var image13 = document.getElementById(13);
 var image14 = document.getElementById(14);
 var image15 = document.getElementById(15);
 var image16 = document.getElementById(16);
-var listOfImages = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16];
+var imagesToFlip = [];
+
+
 function startgame() {
-    console.log("test pnt1"); //TEST
     var numsAvailable = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
     var cardsScramble = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-
+    //randomizes card at each start of game
     for (let i = 0; i < 16; i++) {
         var randIndx = Math.floor(Math.random() * numsAvailable.length);
         cardsScramble[i] = numsAvailable[randIndx];
         numsAvailable.splice(randIndx, 1);
     }
+    //sets to global value to access later
     cards = cardsScramble;
+    //event listener for each card
     image1.addEventListener("click", () => showCard(1));
     image2.addEventListener("click", () => showCard(2));
     image3.addEventListener("click", () => showCard(3));
@@ -58,28 +61,19 @@ function checkNumClicks() {
 }
 
 function checkIfSame(){
-    console.log("test pnt3"); //TEST
     let potentialMatch = [];
     let indexList = [];
-    //THIS IS JUST TO SEE WHAT IS CURRENTLY IN LIST OF IMAGES!
-    console.log("srcs of everysingle image in list of images!");
-    for (let i = 0; i<listOfImages.length; i++){
-        console.log(listOfImages[i].src);
-    }
-    for (let i=0; i<listOfImages.length; i++){//splice listOfImages[i].src into only the last part
-        var objCheck = listOfImages[i].src;
-        var lastIndex = objCheck.lastIndexOf('/');
-        var textAfterLastSlash = objCheck.substring(lastIndex + 1);
-        //console.log("This is whatever is after the last slash of the current image: " textAfterLastSlash); //testing to see what that is
-        if (textAfterLastSlash !== "card.png") {
+    for (let i=0; i<listOfImages.length; i++){
+        console.log("test point 1");
+        if (listOfImages[i].src !== "http://127.0.0.1:5500/matchgame/card.png") {
             potentialMatch.push(listOfImages[i]);
             indexList.push(i);
         }
     }
-    console.log("Potential Match length: "+  potentialMatch.length);
+    console.log(potentialMatch.length);
     if((potentialMatch.length===2 && potentialMatch[0].src===potentialMatch[1].src)){
-        console.log("first element of potential match: " + potentialMatch[0]);
-        console.log("second element of potential match: " + potentialMatch[1]);
+        console.log(potentialMatch[0]);
+    console.log(potentialMatch[1]);
         listOfImages.splice(indexList[0], 1);
         listOfImages.splice((indexList[1])-1, 1);
         potentialMatch = [];
@@ -88,22 +82,30 @@ function checkIfSame(){
     upTo2 = 0;
 }
 
+function getLastSegment(path){
+    // lastIndx = null;
+    // currIndex = path.length-1;
+    // while (lastIndx == null){
+    //     if (path.substring(currIndex, ))
+    // }
+}
+
 
 function hideAll(){
-    console.log("test pnt4"); //TEST
     for (let i = 0; i<listOfImages.length; i++){
         listOfImages[i].src = "card.png";
     }
 }
 
 function showCard(imageID){
-    console.log("test pnt2"); //TEST
     upTo2++;
-    console.log(upTo2);
     clicks++;
+    checkNumClicks();
+    updateClicks();
     var currCard = document.getElementById(imageID);
     if (cards[imageID-1]==1){
         currCard.src = "gamepics/funny1.jpg";
+        imagesToFlip
     }
     if (cards[imageID-1]==2){
         currCard.src = "gamepics/funny2.jpg";
@@ -126,8 +128,6 @@ function showCard(imageID){
     if (cards[imageID-1]==8){
         currCard.src = "gamepics/funny8.jpg";
     }
-    checkNumClicks();
-    updateClicks();
 }
 
 function updateClicks() {
