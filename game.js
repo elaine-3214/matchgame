@@ -23,16 +23,14 @@ var listOfImages = [];
 
 function startgame() {
     clicks = 0;
-    console.log(clicks);
     upTo2 = 0;
     listOfImages = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16];
     for (let i = 0; i<listOfImages.length; i++){
         listOfImages[i].src = "card.png";
     }
-    console.log("test pnt1"); //TEST
     var numsAvailable = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
     var cardsScramble = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-
+    //randomizes card at each start of game
     for (let i = 0; i < 16; i++) {
         var randIndx = Math.floor(Math.random() * numsAvailable.length);
         cardsScramble[i] = numsAvailable[randIndx];
@@ -42,6 +40,7 @@ function startgame() {
 }
 
 function checkNumClicks() {
+    //when two cards that are flipped
     if (upTo2>=2) {
         checkIfSame();
         setTimeout(() => {
@@ -52,14 +51,12 @@ function checkNumClicks() {
 }
 
 function checkIfSame(){
-    console.log("test pnt3"); //TEST
     let potentialMatch = [];
     let indexList = [];
-    //THIS IS JUST TO SEE WHAT IS CURRENTLY IN LIST OF IMAGES!
-    console.log("srcs of everysingle image in list of images!");
     for (let i = 0; i<listOfImages.length; i++){
         console.log(listOfImages[i].src);
     }
+    //checks the source of two images
     for (let i=0; i<listOfImages.length; i++){//splice listOfImages[i].src into only the last part
         var objCheck = listOfImages[i].src;
         var lastIndex = objCheck.lastIndexOf('/');
@@ -85,13 +82,14 @@ function checkIfSame(){
 
 
 function hideAll(){
-    console.log("test pnt4"); //TEST
+    //flips the cards back over
     for (let i = 0; i<listOfImages.length; i++){
         listOfImages[i].src = "card.png";
     }
 }
 
 function showCard(imageID){
+    //flips the card over
     upTo2++;
     console.log("this is the " + upTo2 + "click");
     console.log("test pnt2"); //TEST
@@ -128,11 +126,13 @@ function showCard(imageID){
 }
 
 function updateClicks() {
+    //updates score
     var text = document.getElementById("Clicks");
     text.innerHTML = "Number of Clicks: " + clicks;
 }
 
 function checkWin() {
+    //comments for each score
     var text = document.getElementById("response");
     if (listOfImages.length == 0) {
         if (clicks <= 24) {

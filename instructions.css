@@ -1,4 +1,27 @@
 body {
-
-    background-color: beige;
+    text-align: center;
+    background-color: #aac2ce;
+    font-family: 'Courier New', Courier, monospace;
 }
+body ul {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #a38672;
+}
+
+button {
+    border-radius: 12px;
+    border: 2px solid #c6d4d8;
+    padding: 10px 10px;
+    font-family:'Courier New', Courier, monospace courier;
+    font-size: 16px;
+    background-color: #e6ecee;
+}
+button:hover {
+    background-color: #aac2ce;
+}
+
+
