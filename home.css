@@ -1,3 +1,11 @@
 body {
-    background-color: bisque;
+    background-color: #aac2ce;
+}
+
+h1 {
+    color: #a38672;
+}
+
+button {
+    background-color: #e6ecee;
 }

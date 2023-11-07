@@ -39,25 +39,6 @@ function startgame() {
         numsAvailable.splice(randIndx, 1);
     }
     cards = cardsScramble;
-    listOfImages.forEach((image,indx) => { 
-        image.removeEventListener("click",() => showCard(index+1));
-    });
-    image1.addEventListener("click", () => showCard(1));
-    image2.addEventListener("click", () => showCard(2));
-    image3.addEventListener("click", () => showCard(3));
-    image4.addEventListener("click", () => showCard(4));
-    image5.addEventListener("click", () => showCard(5));
-    image6.addEventListener("click", () => showCard(6));
-    image7.addEventListener("click", () => showCard(7));
-    image8.addEventListener("click", () => showCard(8));
-    image9.addEventListener("click", () => showCard(9));
-    image10.addEventListener("click", () => showCard(10));
-    image11.addEventListener("click", () => showCard(11));
-    image12.addEventListener("click", () => showCard(12));
-    image13.addEventListener("click", () => showCard(13));
-    image14.addEventListener("click", () => showCard(14));
-    image15.addEventListener("click", () => showCard(15));
-    image16.addEventListener("click", () => showCard(16));
 }
 
 function checkNumClicks() {
@@ -99,6 +80,7 @@ function checkIfSame(){
     }
     potentialMatch =[];
     upTo2 = 0;
+    checkWin();
 }
 
 
@@ -148,4 +130,17 @@ function showCard(imageID){
 function updateClicks() {
     var text = document.getElementById("Clicks");
     text.innerHTML = "Number of Clicks: " + clicks;
+}
+
+function checkWin() {
+    var text = document.getElementById("response");
+    if (listOfImages.length == 0) {
+        if (clicks <= 24) {
+            text.innerHTML = "Amazing! You will save the world from being taken over by robots.";
+        } else if (clicks <= 32) {
+            text.innerHTML = "Average. You might die trying to save the world from being taken over by robots.";
+        } else {
+            text.innerHTML = "You can do better than that and you know it. If you keep this up, the robots would have already taken over the world by the time you're done with another round";
+        }
+    }
 }
