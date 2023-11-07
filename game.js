@@ -23,7 +23,7 @@ var listOfImages = [];
 
 function startgame() {
     clicks = 0;
-    console.log("ALL CLCIKS ARE ZEROs");
+    console.log(clicks);
     upTo2 = 0;
     listOfImages = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13, image14, image15, image16];
     for (let i = 0; i<listOfImages.length; i++){
@@ -39,6 +39,9 @@ function startgame() {
         numsAvailable.splice(randIndx, 1);
     }
     cards = cardsScramble;
+    listOfImages.forEach((image,indx) => { 
+        image.removeEventListener("click",() => showCard(index+1));
+    });
     image1.addEventListener("click", () => showCard(1));
     image2.addEventListener("click", () => showCard(2));
     image3.addEventListener("click", () => showCard(3));
@@ -58,7 +61,7 @@ function startgame() {
 }
 
 function checkNumClicks() {
-    if (clicks%2 === 0) {
+    if (upTo2>=2) {
         checkIfSame();
         setTimeout(() => {
             hideAll();
@@ -112,6 +115,7 @@ function showCard(imageID){
     console.log("test pnt2"); //TEST
     console.log(upTo2);
     clicks++;
+    console.log(clicks);
     var currCard = document.getElementById(imageID);
     if (cards[imageID-1]==1){
         currCard.src = "gamepics/funny1.jpg";
